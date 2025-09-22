@@ -210,6 +210,81 @@ def validate_ctg_parameters(features_list):
     except Exception as e:
         return {'valid': False, 'error': str(e)}
 
+def analyze_deceleration_patterns(features_list):
+    """
+    Analyze deceleration patterns in CTG data for clinical significance.
+
+    Args:
+        features_list (list): List of 21 CTG parameters
+
+    Returns:
+        dict: Deceleration analysis results
+    """
+    try:
+        if len(features_list) < 7:
+            return {'normal': True, 'summary': 'Insufficient data for analysis'}
+
+        light_decels = features_list[4]
+        severe_decels = features_list[5] 
+        prolonged_decels = features_list[6]
+        
+        analysis = {
+            'normal': True,
+            'summary': '',
+            'details': [],
+            'risk_level': 'Low'
+        }
+
+        total_decels = light_decels + severe_decels + prolonged_decels
+
+        # Analyze deceleration patterns
+        if severe_decels > 0.005:
+            analysis['normal'] = False
+            analysis['risk_level'] = 'High'
+            analysis['summary'] = 'Significant severe decelerations detected - indicates fetal compromise'
+            analysis['details'].append(f'Severe decelerations: {severe_decels:.4f}/sec (critical threshold: >0.005/sec)')
+            analysis['details'].append('Immediate obstetric consultation recommended')
+            
+        elif prolonged_decels > 0.003:
+            analysis['normal'] = False
+            analysis['risk_level'] = 'High' if prolonged_decels > 0.005 else 'Moderate'
+            analysis['summary'] = 'Prolonged decelerations present - may indicate cord compression'
+            analysis['details'].append(f'Prolonged decelerations: {prolonged_decels:.4f}/sec')
+            analysis['details'].append('Consider maternal position change and continuous monitoring')
+            
+        elif light_decels > 0.01:
+            analysis['normal'] = False
+            analysis['risk_level'] = 'Moderate'
+            analysis['summary'] = 'Frequent light decelerations noted'
+            analysis['details'].append(f'Light decelerations: {light_decels:.4f}/sec')
+            analysis['details'].append('Monitor for progression to more severe patterns')
+            
+        elif total_decels > 0.001:
+            analysis['normal'] = False
+            analysis['risk_level'] = 'Low'
+            analysis['summary'] = 'Minimal decelerations present - continue monitoring'
+            analysis['details'].append(f'Total deceleration rate: {total_decels:.4f}/sec')
+            
+        else:
+            analysis['summary'] = 'No significant decelerations detected - reassuring pattern'
+            analysis['details'].append('Absence of decelerations indicates good fetal well-being')
+
+        # Add clinical context
+        if not analysis['normal']:
+            analysis['details'].append('Deceleration patterns should be interpreted with baseline FHR and variability')
+            
+            # Additional context based on baseline
+            baseline_fhr = features_list[0] if len(features_list) > 0 else 140
+            if baseline_fhr < 110 and total_decels > 0:
+                analysis['details'].append('Bradycardia with decelerations - high concern for fetal acidosis')
+            elif baseline_fhr > 160 and total_decels > 0:
+                analysis['details'].append('Tachycardia with decelerations - evaluate for infection or hypoxia')
+
+        return analysis
+
+    except Exception as e:
+        return {'normal': True, 'error': f'Error analyzing decelerations: {str(e)}'}
+
 def calculate_risk_factors(age, blood_pressure, blood_sugar):
     """
     Calculate comprehensive risk factors based on clinical parameters.

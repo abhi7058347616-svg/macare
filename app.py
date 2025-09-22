@@ -676,10 +676,33 @@ elif selected == 'Fetal Health Prediction':
 
             with tab2:
                 st.markdown("**Heart Rate Variability Parameters**")
+                st.info("📊 These parameters measure fetal heart rate patterns")
+                # Skip decelerations (4,5,6) - they're handled in tab3
+                # Handle uterine contractions (index 3) and variability params (7-10)
                 cols = st.columns(3)
-                for i in range(4, 11):
+                variability_indices = [3, 7, 8, 9, 10]  # Uterine contractions + variability params
+                for idx, i in enumerate(variability_indices):
                     param_name, unit, min_val, max_val, default = ctg_params[i]
-                    with cols[i % 3]:
+                    with cols[idx % 3]:
+                        value = st.number_input(
+                            f"{param_name} ({unit})",
+                            min_value=float(min_val),
+                            max_value=float(max_val),
+                            value=float(default),
+                            step=0.001 if i == 3 else (0.1 if isinstance(default, float) else 1.0),
+                            key=f"param_{i}"
+                        )
+                        # Insert at correct position
+                        while len(features) <= i:
+                            features.append(0.0)
+                        features[i] = value
+                        
+            with tab2:
+                st.markdown("**Heart Rate Variability Parameters**")
+                cols = st.columns(3)
+                for i in range(7, 11):
+                    param_name, unit, min_val, max_val, default = ctg_params[i]
+                    with cols[(i-7) % 3]:
                         value = st.number_input(
                             f"{param_name} ({unit})",
                             min_value=float(min_val),
@@ -694,21 +717,24 @@ elif selected == 'Fetal Health Prediction':
                 st.markdown("**Deceleration Patterns**")
                 st.info("⚠️ Deceleration values indicate potential fetal distress")
                 cols = st.columns(3)
-                # We already handled decelerations in tab1, so let's add the remaining variability params
-                for i in range(7, 11):  # Adjusted range
-                    if i < len(ctg_params):
-                        param_name, unit, min_val, max_val, default = ctg_params[i]
-                        with cols[(i-7) % 3]:
-                            # Skip if already added
-                            if i >= len(features):
-                                value = st.number_input(
-                                    f"{param_name} ({unit})",
-                                    min_value=float(min_val),
-                                    max_value=float(max_val),
-                                    value=float(default),
-                                    step=0.1 if isinstance(default, float) else 1.0,
-                                    key=f"param_decel_{i}"
-                                )
+                # Add the deceleration parameters (indices 4, 5, 6)
+                decel_indices = [4, 5, 6]  # Light, Severe, Prolonged decelerations
+                for idx, i in enumerate(decel_indices):
+                    param_name, unit, min_val, max_val, default = ctg_params[i]
+                    with cols[idx % 3]:
+                        value = st.number_input(
+                            f"{param_name} ({unit})",
+                            min_value=float(min_val),
+                            max_value=float(max_val),
+                            value=float(default),
+                            step=0.001,
+                            key=f"param_decel_{i}",
+                            help=f"Rate of {param_name.lower()} per second"
+                        )
+                        # Insert at correct position in features list
+                        while len(features) <= i:
+                            features.append(0.0)
+                        features[i] = value
 
             with tab4:
                 st.markdown("**Histogram Analysis Parameters**")
@@ -864,6 +890,14 @@ elif selected == 'Fetal Health Prediction':
                             value=st.session_state.fetal_prediction_result['health_text'],
                             delta=f"Confidence: {['High', 'Moderate', 'High'][predicted_health[0]]}"
                         )
+
+                    # Enhanced deceleration analysis
+                    decel_analysis = utils.analyze_deceleration_patterns(features)
+                    if decel_analysis and not decel_analysis.get('normal', True):
+                        st.subheader("⚠️ Deceleration Pattern Analysis")
+                        st.warning(decel_analysis.get('summary', 'Deceleration patterns detected'))
+                        for detail in decel_analysis.get('details', []):
+                            st.info(f"• {detail}")
 
                     # Display validation warnings if any
                     if 'warnings' in validation_result and validation_result['warnings']:
