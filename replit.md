@@ -1,0 +1,66 @@
+# MatCare - Maternal & Fetal Health Platform
+
+## Overview
+
+MatCare is a comprehensive maternal and fetal health prediction platform built with Streamlit. The application provides healthcare professionals and expectant mothers with AI-powered risk assessment tools for pregnancy-related health monitoring. The platform features two main prediction models: pregnancy risk assessment and fetal health evaluation, both designed to provide early warning indicators and support informed medical decision-making.
+
+The application combines machine learning models with an intuitive web interface to deliver real-time health predictions based on key maternal health indicators including age, blood pressure, blood glucose levels, body temperature, and heart rate.
+
+## User Preferences
+
+Preferred communication style: Simple, everyday language.
+
+## System Architecture
+
+### Frontend Architecture
+- **Framework**: Streamlit-based web application with custom CSS styling
+- **UI Components**: Modern component library using streamlit-option-menu for navigation
+- **Responsive Design**: Wide layout configuration optimized for both desktop and mobile viewing
+- **Styling**: Custom CSS with gradient backgrounds, clean typography, and professional healthcare-themed design
+
+### Backend Architecture
+- **Core Framework**: Python-based Streamlit application (app.py)
+- **Data Processing**: Utility module (utils.py) handling data preprocessing, validation, and business logic
+- **Model Integration**: Pickle-based machine learning model loading and inference
+- **Data Validation**: Comprehensive input validation with physiological range checking and warning systems
+
+### Data Processing Pipeline
+- **Input Preprocessing**: StandardScaler for feature normalization
+- **Validation Layer**: Multi-level validation including range checking for medical parameters
+- **Prediction Engine**: Dual model system for pregnancy risk and fetal health assessment
+- **Result Processing**: Structured output formatting with risk categorization
+
+### Report Generation
+- **PDF Engine**: ReportLab integration for comprehensive medical report generation
+- **Document Structure**: Professional medical report layout including patient data, predictions, timestamps, and branding
+- **Export Functionality**: Downloadable PDF reports with complete assessment results
+
+## External Dependencies
+
+### Core Libraries
+- **streamlit**: Primary web application framework
+- **streamlit-option-menu**: Enhanced navigation components
+- **pandas**: Data manipulation and analysis
+- **numpy**: Numerical computing and array operations
+- **scikit-learn**: Machine learning model preprocessing (StandardScaler)
+
+### Visualization
+- **plotly.express**: Interactive data visualization and charting
+
+### Machine Learning
+- **pickle**: Model serialization and loading
+- **sklearn.preprocessing**: Data preprocessing and normalization
+
+### Report Generation
+- **reportlab**: PDF document generation with professional formatting
+- **tempfile**: Temporary file handling for PDF creation
+
+### Utility Libraries
+- **warnings**: System warning management
+- **datetime**: Timestamp generation for reports
+- **os**: Operating system interface for file operations
+- **io.StringIO**: String buffer operations
+- **requests**: HTTP client for potential external API integrations
+
+### Model Assets
+The application relies on pre-trained machine learning models stored as pickle files, which are loaded dynamically for pregnancy risk and fetal health predictions. These models expect preprocessed input data in specific formats and return structured prediction results.
