@@ -677,41 +677,40 @@ elif selected == 'Fetal Health Prediction':
             with tab2:
                 st.markdown("**Heart Rate Variability Parameters**")
                 st.info("📊 These parameters measure fetal heart rate patterns")
-                # Skip decelerations (4,5,6) - they're handled in tab3
-                # Handle uterine contractions (index 3) and variability params (7-10)
+                
+                # First handle uterine contractions (index 3)
                 cols = st.columns(3)
-                variability_indices = [3, 7, 8, 9, 10]  # Uterine contractions + variability params
-                for idx, i in enumerate(variability_indices):
-                    param_name, unit, min_val, max_val, default = ctg_params[i]
-                    with cols[idx % 3]:
-                        value = st.number_input(
-                            f"{param_name} ({unit})",
-                            min_value=float(min_val),
-                            max_value=float(max_val),
-                            value=float(default),
-                            step=0.001 if i == 3 else (0.1 if isinstance(default, float) else 1.0),
-                            key=f"param_{i}"
-                        )
-                        # Insert at correct position
-                        while len(features) <= i:
-                            features.append(0.0)
-                        features[i] = value
-                        
-            with tab2:
-                st.markdown("**Heart Rate Variability Parameters**")
-                cols = st.columns(3)
+                param_name, unit, min_val, max_val, default = ctg_params[3]
+                with cols[0]:
+                    value = st.number_input(
+                        f"{param_name} ({unit})",
+                        min_value=float(min_val),
+                        max_value=float(max_val),
+                        value=float(default),
+                        step=0.001,
+                        key=f"param_3_variability"
+                    )
+                    # Ensure features list is long enough
+                    while len(features) <= 3:
+                        features.append(0.0)
+                    features[3] = value
+                
+                # Then handle variability parameters (7-10)
                 for i in range(7, 11):
                     param_name, unit, min_val, max_val, default = ctg_params[i]
-                    with cols[(i-7) % 3]:
+                    with cols[(i-6) % 3]:
                         value = st.number_input(
                             f"{param_name} ({unit})",
                             min_value=float(min_val),
                             max_value=float(max_val),
                             value=float(default),
                             step=0.1 if isinstance(default, float) else 1.0,
-                            key=f"param_{i}"
+                            key=f"param_variability_{i}"
                         )
-                        features.append(value)
+                        # Ensure features list is long enough
+                        while len(features) <= i:
+                            features.append(0.0)
+                        features[i] = value
                         
             with tab3:
                 st.markdown("**Deceleration Patterns**")
@@ -721,17 +720,17 @@ elif selected == 'Fetal Health Prediction':
                 decel_indices = [4, 5, 6]  # Light, Severe, Prolonged decelerations
                 for idx, i in enumerate(decel_indices):
                     param_name, unit, min_val, max_val, default = ctg_params[i]
-                    with cols[idx % 3]:
+                    with cols[idx]:
                         value = st.number_input(
                             f"{param_name} ({unit})",
                             min_value=float(min_val),
                             max_value=float(max_val),
                             value=float(default),
                             step=0.001,
-                            key=f"param_decel_{i}",
+                            key=f"param_deceleration_{i}",
                             help=f"Rate of {param_name.lower()} per second"
                         )
-                        # Insert at correct position in features list
+                        # Ensure features list is long enough
                         while len(features) <= i:
                             features.append(0.0)
                         features[i] = value
@@ -741,16 +740,19 @@ elif selected == 'Fetal Health Prediction':
                 cols = st.columns(3)
                 for i in range(11, 21):
                     param_name, unit, min_val, max_val, default = ctg_params[i]
-                    with cols[i % 3]:
+                    with cols[(i-11) % 3]:
                         value = st.number_input(
                             f"{param_name} ({unit})",
                             min_value=float(min_val),
                             max_value=float(max_val),
                             value=float(default),
                             step=0.1 if isinstance(default, float) else 1.0,
-                            key=f"param_{i}"
+                            key=f"param_histogram_{i}"
                         )
-                        features.append(value)
+                        # Ensure features list is long enough
+                        while len(features) <= i:
+                            features.append(0.0)
+                        features[i] = value
 
             # Ensure we have exactly 21 features
             while len(features) < 21:
