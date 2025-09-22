@@ -217,141 +217,40 @@ st.markdown("</div></div>", unsafe_allow_html=True)
 
 # About Us Page
 if selected == 'About Us':
-    st.markdown('<div class="prediction-card">', unsafe_allow_html=True)
     st.title("Welcome to MatCare")
     st.markdown("""
-    At **MatCare**, our mission is to revolutionize healthcare by offering innovative solutions through 
-    predictive analysis. Our platform is specifically designed to address the intricate aspects of 
-    maternal and fetal health, providing accurate predictions and proactive risk management.
+    **AI-powered maternal and fetal health predictions** for better healthcare outcomes. 
+    Our platform provides accurate risk assessments through advanced machine learning.
     """)
-    st.markdown('</div>', unsafe_allow_html=True)
 
-    # Key Features Section with cards
+    # Key Features
     col1, col2 = st.columns(2, gap="large")
 
     with col1:
-        st.markdown('<div class="prediction-card">', unsafe_allow_html=True)
         st.subheader("🤰 Pregnancy Risk Prediction")
-        st.markdown("""
-        Our **Pregnancy Risk Prediction** feature utilizes advanced machine learning algorithms to analyze 
-        various parameters, including age, blood pressure, blood sugar levels, body temperature, and heart rate. 
-        By processing this information, we provide accurate predictions of potential risks during pregnancy, 
-        enabling early intervention and better healthcare outcomes.
-        """)
-        
-        st.success("""
-        **✨ Key Features:**
-        - 🎯 Real-time risk assessment
-        - 🧠 ML-powered predictions  
-        - 🎨 Color-coded risk levels
-        - 📊 Clinical parameter analysis
-        - 📄 PDF report generation
-        """)
-        st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown("Analyze maternal health parameters to predict pregnancy risk levels.")
+        st.success("**Features:** Real-time assessment • ML predictions • Color-coded results • PDF reports")
 
     with col2:
-        st.markdown('<div class="prediction-card">', unsafe_allow_html=True)
         st.subheader("👶 Fetal Health Prediction")
+        st.markdown("CTG analysis of 21 medical parameters for comprehensive fetal health assessment.")
+        st.info("**Features:** CTG analysis • 21-parameter assessment • Clinical classification • Health reports")
+
+    # Research Foundation
+    with st.expander("📚 Research Foundation", expanded=False):
         st.markdown("""
-        **Fetal Health Prediction** is a crucial aspect of our system. We leverage cutting-edge technology 
-        to assess the health status of the fetus through Cardiotocogram (CTG) analysis. Our system analyzes 
-        21 different medical parameters to deliver comprehensive insights into the well-being of the unborn child.
-        """)
-        
-        st.info("""
-        **✨ Key Features:**
-        - 📈 CTG data analysis
-        - 🔢 21-parameter assessment
-        - 🚦 Normal/Suspect/Pathological classification
-        - 📚 Evidence-based predictions
-        - 📄 Detailed health reports
-        """)
-        st.markdown('</div>', unsafe_allow_html=True)
-
-    # Methodology Section
-    st.markdown('<div class="prediction-card">', unsafe_allow_html=True)
-    st.subheader("🔬 Our Research-Based Methodology")
-    st.markdown("""
-    MatCare employs **state-of-the-art machine learning techniques** to predict pregnancy and fetal health risks. 
-    Our methodology is grounded in evidence-based medical research and follows international healthcare standards.
-    """)
-
-    # Research approach
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown("""
-        **🎯 Machine Learning Approach:**
-        - **Feature Engineering**: Careful selection and preprocessing of clinical parameters
-        - **Model Validation**: Rigorous testing and cross-validation for reliability
-        - **Risk Stratification**: Multi-level risk assessment for clinical decision support
-        """)
-    with col2:
-        st.markdown("""
-        **🏥 Clinical Integration:**
-        - **Evidence-Based**: Built on peer-reviewed medical research
-        - **Professional Tools**: Designed for healthcare professionals
-        - **Real-World Application**: Practical solutions for clinical settings
+        Built on evidence-based medical research from leading institutions:
+        - **[WHO Maternal Health Guidelines](https://www.who.int/health-topics/maternal-health#tab=tab_1)**
+        - **[NIH ML Pregnancy Research](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8021575/)**
+        - **[Nature Medicine: Preterm Birth Prediction](https://www.nature.com/articles/s41591-018-0278-2)**
         """)
 
-    # Research References with expandable section
-    with st.expander("📚 Research Foundation & Citations", expanded=False):
-        st.markdown("""
-        Our methodology is supported by peer-reviewed research from leading medical institutions:
-
-        **📖 Key Research Citations:**
-        
-        1. **[WHO: Maternal and newborn health](https://www.who.int/health-topics/maternal-health#tab=tab_1)** - 
-           World Health Organization guidelines on maternal health standards
-
-        2. **[NIH: Machine learning for pregnancy risk prediction](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8021575/)** - 
-           National Institutes of Health research on ML applications in pregnancy risk assessment
-
-        3. **[Frontiers in Global Women's Health: AI in maternal care](https://www.frontiersin.org/articles/10.3389/fgwh.2021.657673/full)** - 
-           Comprehensive review of AI applications in maternal healthcare
-
-        4. **[Nature: Prediction of preterm birth with ML](https://www.nature.com/articles/s41591-018-0278-2)** - 
-           Nature Medicine publication on machine learning for preterm birth prediction
-        """)
-
-    st.markdown('</div>', unsafe_allow_html=True)
-
-    # Mission Statement
-    st.markdown('<div class="prediction-card">', unsafe_allow_html=True)
-    st.subheader("🎯 Our Mission")
-    st.markdown("""
-    MatCare is committed to **advancing maternal and fetal healthcare** through technology and predictive analytics. 
-    We believe that early detection and risk assessment can significantly improve health outcomes for mothers and babies. 
-    Our platform bridges the gap between advanced machine learning technology and practical healthcare applications.
-    """)
-    st.success("""
-    **🙏 Thank you for choosing MatCare.** We are dedicated to supporting healthcare professionals and expectant 
-    families with reliable, AI-powered health predictions. Feel free to explore our features and take advantage 
-    of the insights we provide.
-    """)
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.info("**Get started** by selecting a prediction tool from the navigation menu above.")
 
 # Pregnancy Risk Prediction Page
 elif selected == 'Pregnancy Risk Prediction':
-    # Step indicator
-    st.markdown("""
-    <div class="step-indicator">
-        <span class="step active">📝 Input Data</span>
-        <span class="step">🔍 Analysis</span>
-        <span class="step">📊 Results</span>
-        <span class="step">📄 Report</span>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown('<div class="prediction-card">', unsafe_allow_html=True)
     st.title('🤰 Pregnancy Risk Prediction')
-    st.markdown("""
-    **Comprehensive Maternal Health Risk Assessment**  
-    Predicting the risk in pregnancy involves analyzing several critical parameters, including maternal age, 
-    blood sugar levels, blood pressure, body temperature, and heart rate. By evaluating these parameters 
-    with our trained machine learning model, we can assess potential risks and make informed predictions 
-    regarding the pregnancy's health status.
-    """)
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown("Enter maternal health parameters to assess pregnancy risk levels.")
 
     if model1 is None:
         st.error("🚨 Prediction model (model1.pkl) is not available. Please check model files in the models/ directory.")
@@ -593,25 +492,8 @@ elif selected == 'Pregnancy Risk Prediction':
 
 # Fetal Health Prediction Page
 elif selected == 'Fetal Health Prediction':
-    # Step indicator
-    st.markdown("""
-    <div class="step-indicator">
-        <span class="step active">📝 Input CTG Data</span>
-        <span class="step">🔍 Analysis</span>
-        <span class="step">📊 Results</span>
-        <span class="step">📄 Report</span>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown('<div class="prediction-card">', unsafe_allow_html=True)
     st.title('👶 Fetal Health Prediction')
-    st.markdown("""
-    **Advanced Cardiotocogram (CTG) Analysis**  
-    Cardiotocograms (CTGs) are a simple and cost-accessible option to assess fetal health, allowing healthcare 
-    professionals to take action in order to prevent child and maternal mortality. Our system analyzes 21 different 
-    CTG parameters to provide comprehensive fetal health assessment with high accuracy.
-    """)
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown("Enter CTG parameters to assess fetal health status.")
 
     if model2 is None:
         st.error("🚨 Fetal health prediction model (model2.pkl) is not available. Please check model files in the models/ directory.")
@@ -619,7 +501,6 @@ elif selected == 'Fetal Health Prediction':
     else:
         st.markdown('<div class="input-section">', unsafe_allow_html=True)
         st.subheader("📊 Enter CTG Parameters")
-        st.info("💡 **Tip:** All 21 parameters are required for accurate fetal health assessment. Use clinical CTG data for best results.")
 
         # CTG parameter names for reference
         ctg_params = [
