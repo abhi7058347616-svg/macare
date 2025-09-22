@@ -1,0 +1,64 @@
+I have built a full-scale Streamlit app available here:
+👉 [king-fu-panda/MatCare](https://github.com/king-fu-panda/MatCare)
+
+I want you to **improve the UI/UX** and **fix result-related issues** with the following instructions.
+⚠️ Important: The final app must **run smoothly on localhost** with `streamlit run app.py` without errors or glitches.
+
+---
+
+### 🔹 UI/UX Enhancements
+
+1. Keep the overall design **simple, minimal, and clean**.
+2. Use **modern Streamlit components** (cards, expanders, tabs) where suitable.
+3. Fix **alignment issues** and make sure all sections are responsive (desktop & mobile).
+4. Replace any confusing layouts with a **clear step-by-step flow** for:
+
+   * Inputting user data
+   * Getting predictions (Pregnancy Risk + Fetal Risk Evaluator)
+   * Viewing results
+5. Add a **consistent header/navigation bar** instead of sidebar-based navigation.
+
+---
+
+### 🔹 Result Display Fixes
+
+1. When showing results for **Pregnancy Risk** and **Fetal Risk Evaluator**:
+
+   * Ensure outputs are **clearly formatted** with headings, risk level, and any numerical scores.
+   * Fix any UI glitches when results load (smooth display, no overlaps).
+   * Both models’ outputs must look consistent.
+
+2. Add a **Download PDF** button:
+
+   * The PDF must include all relevant details:
+
+     * Patient information (inputs provided)
+     * Predictions (Pregnancy risk + Fetal risk)
+     * Date/time of generation
+     * Project/App name (**MatCare**)
+   * Use a reliable library like `reportlab` or `fpdf`.
+   * The PDF must download properly and open without formatting issues.
+
+---
+
+### 🔹 Code Instructions
+
+* Keep the **business logic & prediction functions** as they are.
+* Only improve **UI/UX** and **result PDF generation**.
+* Update `requirements.txt` if new libraries are required.
+* Ensure the final app **runs smoothly on localhost** with:
+
+  ```bash
+  streamlit run app.py
+  ```
+
+---
+
+✅ Deliverables:
+
+* A **cleaner, bug-free UI**.
+* Correct and **well-formatted result display**.
+* A **working PDF download feature** with complete details.
+* Fully tested to work on **localhost without errors**.
+
+---
