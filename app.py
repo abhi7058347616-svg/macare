@@ -459,11 +459,11 @@ elif selected == 'Pregnancy Risk Prediction':
                         'body_temp': bodyTemp, 'heart_rate': heartRate
                     }
 
-                    # Update step indicator
+                    # Show step indicator only after successful prediction
                     st.markdown("""
                     <div class="step-indicator">
-                        <span class="step">📝 Input Data</span>
-                        <span class="step">🔍 Analysis</span>
+                        <span class="step active">📝 Input Data</span>
+                        <span class="step active">🔍 Analysis</span>
                         <span class="step active">📊 Results</span>
                         <span class="step">📄 Report</span>
                     </div>
@@ -577,12 +577,12 @@ elif selected == 'Pregnancy Risk Prediction':
             with col2:
                 if st.button('📄 Download PDF Report', type="primary", use_container_width=True):
                     try:
-                        # Update step indicator
+                        # Update step indicator for PDF generation
                         st.markdown("""
                         <div class="step-indicator">
-                            <span class="step">📝 Input Data</span>
-                            <span class="step">🔍 Analysis</span>
-                            <span class="step">📊 Results</span>
+                            <span class="step active">📝 Input Data</span>
+                            <span class="step active">🔍 Analysis</span>
+                            <span class="step active">📊 Results</span>
                             <span class="step active">📄 Report</span>
                         </div>
                         """, unsafe_allow_html=True)
@@ -782,11 +782,11 @@ elif selected == 'Fetal Health Prediction':
                         'fetal_movement': features[2]
                     }
 
-                    # Update step indicator
+                    # Show step indicator only after successful prediction
                     st.markdown("""
                     <div class="step-indicator">
-                        <span class="step">📝 Input CTG Data</span>
-                        <span class="step">🔍 Analysis</span>
+                        <span class="step active">📝 Input CTG Data</span>
+                        <span class="step active">🔍 Analysis</span>
                         <span class="step active">📊 Results</span>
                         <span class="step">📄 Report</span>
                     </div>
@@ -900,12 +900,12 @@ elif selected == 'Fetal Health Prediction':
             with col2:
                 if st.button('📄 Download CTG Report', type="primary", use_container_width=True):
                     try:
-                        # Update step indicator
+                        # Update step indicator for PDF generation
                         st.markdown("""
                         <div class="step-indicator">
-                            <span class="step">📝 Input CTG Data</span>
-                            <span class="step">🔍 Analysis</span>
-                            <span class="step">📊 Results</span>
+                            <span class="step active">📝 Input CTG Data</span>
+                            <span class="step active">🔍 Analysis</span>
+                            <span class="step active">📊 Results</span>
                             <span class="step active">📄 Report</span>
                         </div>
                         """, unsafe_allow_html=True)
