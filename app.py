@@ -664,7 +664,7 @@ elif selected == 'Fetal Health Prediction':
                             min_value=float(min_val),
                             max_value=float(max_val),
                             value=float(default),
-                            step=0.001 if isinstance(default, float) else 1,
+                            step=0.001 if isinstance(default, float) else 1.0,
                             key=f"param_{i}"
                         )
                         features.append(value)
@@ -680,7 +680,7 @@ elif selected == 'Fetal Health Prediction':
                             min_value=float(min_val),
                             max_value=float(max_val),
                             value=float(default),
-                            step=0.1 if isinstance(default, float) else 1,
+                            step=0.1 if isinstance(default, float) else 1.0,
                             key=f"param_{i}"
                         )
                         features.append(value)
@@ -701,7 +701,7 @@ elif selected == 'Fetal Health Prediction':
                                     min_value=float(min_val),
                                     max_value=float(max_val),
                                     value=float(default),
-                                    step=0.1 if isinstance(default, float) else 1,
+                                    step=0.1 if isinstance(default, float) else 1.0,
                                     key=f"param_decel_{i}"
                                 )
 
@@ -716,7 +716,7 @@ elif selected == 'Fetal Health Prediction':
                             min_value=float(min_val),
                             max_value=float(max_val),
                             value=float(default),
-                            step=0.1 if isinstance(default, float) else 1,
+                            step=0.1 if isinstance(default, float) else 1.0,
                             key=f"param_{i}"
                         )
                         features.append(value)
