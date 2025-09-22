@@ -320,90 +320,76 @@ if selected == 'About Us':
         </div>
         """, unsafe_allow_html=True)
 
-    # Research Foundation Modal
-    col1, col2, col3 = st.columns([1, 2, 1])
-    with col2:
-        if st.button("📚 View Research Foundation", type="secondary", use_container_width=True):
-            st.session_state.show_research_modal = True
-
-    # Research Foundation Modal Popup
-    if st.session_state.get('show_research_modal', False):
+    # Research Foundation Section
+    st.markdown("---")
+    st.markdown("## 📚 Research Foundation")
+    st.markdown("Our methodology is supported by peer-reviewed research from leading medical institutions:")
+    
+    # Research cards in grid layout
+    col1, col2 = st.columns(2, gap="large")
+    
+    with col1:
         st.markdown("""
-        <div style="
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        ">
-            <div style="
-                background: white;
-                border-radius: 15px;
-                padding: 2rem;
-                max-width: 800px;
-                max-height: 80vh;
-                overflow-y: auto;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-                margin: 1rem;
-                position: relative;
-            ">
-                <div style="display: flex; align-items: center; margin-bottom: 1.5rem; border-bottom: 2px solid #f0f2f6; padding-bottom: 1rem;">
-                    <div style="background: linear-gradient(90deg, #1f77b4 0%, #2ca02c 100%); width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
-                        <span style="color: white; font-size: 1.5rem;">📚</span>
-                    </div>
-                    <h2 style="margin: 0; color: #1f77b4; font-size: 1.8rem;">Research Foundation</h2>
+        <div class="prediction-card">
+            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                <div style="background: #1f77b4; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                    <span style="color: white; font-size: 1.2rem;">🏥</span>
                 </div>
-                
-                <p style="font-size: 1.1rem; color: #495057; margin-bottom: 2rem; line-height: 1.6;">
-                    Our methodology is supported by peer-reviewed research from leading medical institutions:
-                </p>
-                
-                <div style="space-y: 1.5rem;">
-                    <div style="border-left: 4px solid #1f77b4; padding-left: 1rem; margin-bottom: 1.5rem;">
-                        <h4 style="color: #1f77b4; margin: 0 0 0.5rem 0;">WHO: Maternal and newborn health</h4>
-                        <p style="margin: 0; color: #6c757d;">World Health Organization guidelines on maternal health standards</p>
-                        <a href="https://www.who.int/health-topics/maternal-health#tab=tab_1" target="_blank" style="color: #007bff; text-decoration: none; font-weight: 500;">→ View Guidelines</a>
-                    </div>
-                    
-                    <div style="border-left: 4px solid #28a745; padding-left: 1rem; margin-bottom: 1.5rem;">
-                        <h4 style="color: #28a745; margin: 0 0 0.5rem 0;">NIH: Machine learning for pregnancy risk prediction</h4>
-                        <p style="margin: 0; color: #6c757d;">National Institutes of Health research on ML applications in pregnancy risk assessment</p>
-                        <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8021575/" target="_blank" style="color: #007bff; text-decoration: none; font-weight: 500;">→ View Research</a>
-                    </div>
-                    
-                    <div style="border-left: 4px solid #6610f2; padding-left: 1rem; margin-bottom: 1.5rem;">
-                        <h4 style="color: #6610f2; margin: 0 0 0.5rem 0;">Frontiers in Global Women's Health: AI in maternal care</h4>
-                        <p style="margin: 0; color: #6c757d;">Comprehensive review of AI applications in maternal healthcare</p>
-                        <a href="#" target="_blank" style="color: #007bff; text-decoration: none; font-weight: 500;">→ View Article</a>
-                    </div>
-                    
-                    <div style="border-left: 4px solid #dc3545; padding-left: 1rem; margin-bottom: 1.5rem;">
-                        <h4 style="color: #dc3545; margin: 0 0 0.5rem 0;">Nature: Prediction of preterm birth with ML</h4>
-                        <p style="margin: 0; color: #6c757d;">Nature Medicine publication on machine learning for preterm birth prediction</p>
-                        <a href="https://www.nature.com/articles/s41591-018-0278-2" target="_blank" style="color: #007bff; text-decoration: none; font-weight: 500;">→ View Publication</a>
-                    </div>
-                </div>
-                
-                <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-top: 2rem;">
-                    <p style="margin: 0; font-style: italic; color: #6c757d; text-align: center;">
-                        All predictions are based on peer-reviewed medical research and should be used in conjunction with professional medical advice.
-                    </p>
-                </div>
+                <h4 style="margin: 0; color: #1f77b4;">WHO: Maternal and newborn health</h4>
             </div>
+            <p style="color: #6c757d; margin-bottom: 1rem;">World Health Organization guidelines on maternal health standards</p>
+            <a href="https://www.who.int/health-topics/maternal-health#tab=tab_1" target="_blank" style="color: #007bff; text-decoration: none; font-weight: 500;">→ View Guidelines</a>
         </div>
         """, unsafe_allow_html=True)
         
-        # Close modal button
-        col1, col2, col3 = st.columns([1, 1, 1])
-        with col2:
-            if st.button("✕ Close", key="close_research_modal", use_container_width=True):
-                st.session_state.show_research_modal = False
-                st.rerun()
+        st.markdown("""
+        <div class="prediction-card">
+            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                <div style="background: #6610f2; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                    <span style="color: white; font-size: 1.2rem;">🔬</span>
+                </div>
+                <h4 style="margin: 0; color: #6610f2;">Frontiers in Global Women's Health</h4>
+            </div>
+            <p style="color: #6c757d; margin-bottom: 1rem;">Comprehensive review of AI applications in maternal healthcare</p>
+            <a href="#" target="_blank" style="color: #007bff; text-decoration: none; font-weight: 500;">→ View Article</a>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div class="prediction-card">
+            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                <div style="background: #28a745; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                    <span style="color: white; font-size: 1.2rem;">🧬</span>
+                </div>
+                <h4 style="margin: 0; color: #28a745;">NIH: Machine learning for pregnancy risk</h4>
+            </div>
+            <p style="color: #6c757d; margin-bottom: 1rem;">National Institutes of Health research on ML applications in pregnancy risk assessment</p>
+            <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8021575/" target="_blank" style="color: #007bff; text-decoration: none; font-weight: 500;">→ View Research</a>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <div class="prediction-card">
+            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                <div style="background: #dc3545; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                    <span style="color: white; font-size: 1.2rem;">📄</span>
+                </div>
+                <h4 style="margin: 0; color: #dc3545;">Nature: Prediction of preterm birth</h4>
+            </div>
+            <p style="color: #6c757d; margin-bottom: 1rem;">Nature Medicine publication on machine learning for preterm birth prediction</p>
+            <a href="https://www.nature.com/articles/s41591-018-0278-2" target="_blank" style="color: #007bff; text-decoration: none; font-weight: 500;">→ View Publication</a>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # Research disclaimer
+    st.markdown("""
+    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 10px; margin: 2rem 0; text-align: center; border-left: 5px solid #1f77b4;">
+        <p style="margin: 0; font-style: italic; color: #6c757d; font-size: 1.1rem;">
+            All predictions are based on peer-reviewed medical research and should be used in conjunction with professional medical advice.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
     # Call to action
     st.markdown("---")
