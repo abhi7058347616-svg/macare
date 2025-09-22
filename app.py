@@ -224,17 +224,86 @@ if selected == 'About Us':
     """)
 
     # Key Features
+    st.markdown("## 🌟 Platform Features")
+    
+    # Feature cards with enhanced visibility
     col1, col2 = st.columns(2, gap="large")
 
     with col1:
-        st.subheader("🤰 Pregnancy Risk Prediction")
-        st.markdown("Analyze maternal health parameters to predict pregnancy risk levels.")
-        st.success("**Features:** Real-time assessment • ML predictions • Color-coded results • PDF reports")
+        st.markdown("""
+        <div class="prediction-card">
+            <h3>🤰 Pregnancy Risk Prediction</h3>
+            <p style="font-size: 1.1rem; margin: 1rem 0;">Analyze maternal health parameters to predict pregnancy risk levels using advanced machine learning.</p>
+            <div style="background: #e8f5e8; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                <strong>Key Features:</strong><br>
+                ✅ Real-time risk assessment<br>
+                ✅ ML-powered predictions<br>
+                ✅ Color-coded risk levels<br>
+                ✅ Professional PDF reports<br>
+                ✅ Research-backed analysis
+            </div>
+            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">
+                <strong>Input Parameters:</strong> Age • Blood Pressure • Blood Sugar • Body Temperature • Heart Rate
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
 
     with col2:
-        st.subheader("👶 Fetal Health Prediction")
-        st.markdown("CTG analysis of 21 medical parameters for comprehensive fetal health assessment.")
-        st.info("**Features:** CTG analysis • 21-parameter assessment • Clinical classification • Health reports")
+        st.markdown("""
+        <div class="prediction-card">
+            <h3>👶 Fetal Health Prediction</h3>
+            <p style="font-size: 1.1rem; margin: 1rem 0;">Comprehensive CTG analysis using 21 medical parameters for fetal health assessment.</p>
+            <div style="background: #e8f4fd; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                <strong>Key Features:</strong><br>
+                ✅ Advanced CTG analysis<br>
+                ✅ 21-parameter assessment<br>
+                ✅ Clinical classification<br>
+                ✅ Detailed health reports<br>
+                ✅ Real-time monitoring alerts
+            </div>
+            <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px;">
+                <strong>Analysis Types:</strong> Heart Rate Variability • Accelerations • Decelerations • Histogram Analysis
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    # Additional feature highlights
+    st.markdown("---")
+    st.markdown("## 🎯 Why Choose MatCare?")
+    
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        st.markdown("""
+        <div class="metric-card">
+            <h4>🔬 AI-Powered</h4>
+            <p>Advanced machine learning models trained on medical data</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div class="metric-card">
+            <h4>📊 Real-Time</h4>
+            <p>Instant predictions with comprehensive analysis</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col3:
+        st.markdown("""
+        <div class="metric-card">
+            <h4>📄 Professional</h4>
+            <p>Detailed PDF reports for medical professionals</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col4:
+        st.markdown("""
+        <div class="metric-card">
+            <h4>📚 Research-Based</h4>
+            <p>Evidence-based predictions with citations</p>
+        </div>
+        """, unsafe_allow_html=True)
 
     # Research Foundation
     with st.expander("📚 Research Foundation", expanded=False):
@@ -245,7 +314,47 @@ if selected == 'About Us':
         - **[Nature Medicine: Preterm Birth Prediction](https://www.nature.com/articles/s41591-018-0278-2)**
         """)
 
-    st.info("**Get started** by selecting a prediction tool from the navigation menu above.")
+    # Call to action
+    st.markdown("---")
+    st.markdown("## 🚀 Get Started")
+    
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        st.markdown("""
+        <div style="text-align: center; background: linear-gradient(90deg, #1f77b4 0%, #2ca02c 100%); padding: 2rem; border-radius: 15px; color: white; margin: 1rem 0;">
+            <h3 style="color: white; margin: 0;">Ready to begin your health assessment?</h3>
+            <p style="margin: 1rem 0; font-size: 1.1rem;">Select a prediction tool from the navigation menu above to start your analysis.</p>
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                <span style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px;">🤰 Pregnancy Risk</span>
+                <span style="background: rgba(255,255,255,0.2); padding: 0.5rem 1rem; border-radius: 20px;">👶 Fetal Health</span>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # Quick stats
+    st.markdown("## 📈 Platform Capabilities")
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.metric(
+            label="Prediction Models",
+            value="2",
+            delta="Active & Trained"
+        )
+    
+    with col2:
+        st.metric(
+            label="Health Parameters",
+            value="26+",
+            delta="Analyzed in Real-time"
+        )
+    
+    with col3:
+        st.metric(
+            label="Risk Categories",
+            value="6",
+            delta="Comprehensive Classification"
+        )
 
 # Pregnancy Risk Prediction Page
 elif selected == 'Pregnancy Risk Prediction':
