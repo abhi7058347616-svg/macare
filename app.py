@@ -184,8 +184,16 @@ st.markdown("""
             <h1>🤱 MatCare</h1>
             <p>Advanced Maternal & Fetal Health Prediction Platform</p>
         </div>
-        <div class="nav-menu">
+    </div>
+</div>
 """, unsafe_allow_html=True)
+
+# Navigation menu outside the header for better visibility
+st.markdown("<br>", unsafe_allow_html=True)
+
+# Initialize session state for navigation if not exists
+if 'page_selection' not in st.session_state:
+    st.session_state.page_selection = "About Us"
 
 selected = option_menu(
     menu_title=None,
@@ -194,26 +202,33 @@ selected = option_menu(
     menu_icon="cast",
     default_index=0,
     orientation="horizontal",
+    key="main_navigation",
     styles={
-        "container": {"padding": "0!important", "background-color": "transparent"},
-        "icon": {"color": "white", "font-size": "16px"},
+        "container": {
+            "padding": "0!important", 
+            "background-color": "#f8f9fa",
+            "border-radius": "10px",
+            "margin": "0 0 2rem 0",
+            "box-shadow": "0 2px 4px rgba(0,0,0,0.1)"
+        },
+        "icon": {"color": "#1f77b4", "font-size": "18px"},
         "nav-link": {
             "font-size": "16px",
             "text-align": "center",
-            "margin": "0 5px",
-            "padding": "8px 20px",
-            "color": "white",
-            "border-radius": "20px",
-            "--hover-color": "rgba(255,255,255,0.1)",
+            "margin": "5px",
+            "padding": "12px 20px",
+            "color": "#495057",
+            "border-radius": "8px",
+            "font-weight": "500",
+            "--hover-color": "#e9ecef",
         },
         "nav-link-selected": {
-            "background-color": "rgba(255,255,255,0.2)",
-            "border": "1px solid rgba(255,255,255,0.3)"
+            "background-color": "#1f77b4",
+            "color": "white",
+            "box-shadow": "0 2px 4px rgba(31,119,180,0.3)"
         },
     }
 )
-
-st.markdown("</div></div>", unsafe_allow_html=True)
 
 # About Us Page
 if selected == 'About Us':
