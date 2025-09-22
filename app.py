@@ -678,6 +678,13 @@ elif selected == 'Fetal Health Prediction':
             with tab2:
                 st.markdown("**Heart Rate Variability Parameters**")
                 st.info("📊 These parameters measure fetal heart rate patterns")
+                with st.expander("📚 Research Foundation", expanded=False):
+                    st.markdown("""
+                    **Heart Rate Variability Analysis:**
+                    - **[FIGO Guidelines on CTG Interpretation](https://www.figo.org/news/figo-consensus-guidelines-intrapartum-fetal-monitoring-cardiotocography)** - International standards for CTG analysis
+                    - **[Journal of Maternal-Fetal Medicine: HRV Patterns](https://www.tandfonline.com/journals/ijmf20)** - Research on fetal heart rate variability significance
+                    - **[Cochrane Review: Electronic Fetal Monitoring](https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD006066.pub3/full)** - Evidence-based review of continuous fetal monitoring
+                    """)
                 
                 # First handle uterine contractions (index 3)
                 cols = st.columns(3)
@@ -716,6 +723,13 @@ elif selected == 'Fetal Health Prediction':
             with tab3:
                 st.markdown("**Deceleration Patterns**")
                 st.info("⚠️ Deceleration values indicate potential fetal distress")
+                with st.expander("📚 Research Foundation", expanded=False):
+                    st.markdown("""
+                    **Deceleration Pattern Analysis:**
+                    - **[ACOG Practice Bulletin: Fetal Heart Rate Patterns](https://www.acog.org/clinical/clinical-guidance/practice-bulletin)** - Clinical guidelines for deceleration interpretation
+                    - **[BJOG: Pathological CTG Patterns](https://obgyn.onlinelibrary.wiley.com/doi/10.1111/1471-0528.15856)** - Research linking deceleration patterns to neonatal outcomes
+                    - **[RCOG Green-top Guidelines](https://www.rcog.org.uk/guidance/browse-all-guidance/green-top-guidelines/)** - Royal College guidelines on fetal monitoring
+                    """)
                 cols = st.columns(3)
                 # Add the deceleration parameters (indices 4, 5, 6)
                 decel_indices = [4, 5, 6]  # Light, Severe, Prolonged decelerations
@@ -739,6 +753,13 @@ elif selected == 'Fetal Health Prediction':
             with tab4:
                 st.markdown("**Histogram Analysis Parameters**")
                 st.info("📈 Statistical analysis of fetal heart rate distribution patterns")
+                with st.expander("📚 Research Foundation", expanded=False):
+                    st.markdown("""
+                    **Histogram Analysis Research:**
+                    - **[IEEE Transactions: ML in Fetal Monitoring](https://ieeexplore.ieee.org/Xplore/home.jsp)** - Advanced machine learning techniques for CTG analysis
+                    - **[European Journal of Obstetrics: CTG Classification](https://www.ejog.org/article/S0301-2115(15)00234-7/fulltext)** - Comprehensive classification systems for CTG patterns
+                    - **[Nature Medicine: AI in Perinatal Care](https://www.nature.com/nm/)** - Research on artificial intelligence applications in fetal health assessment
+                    """)
                 cols = st.columns(3)
                 for i in range(11, 21):
                     param_name, unit, min_val, max_val, default = ctg_params[i]
