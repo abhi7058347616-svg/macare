@@ -660,6 +660,7 @@ elif selected == 'Fetal Health Prediction':
             
             with tab1:
                 st.markdown("**Basic CTG Measurements**")
+                st.info("📊 Basic fetal heart rate parameters and uterine activity measurements")
                 cols = st.columns(3)
                 for i in range(0, 4):
                     param_name, unit, min_val, max_val, default = ctg_params[i]
@@ -737,6 +738,7 @@ elif selected == 'Fetal Health Prediction':
 
             with tab4:
                 st.markdown("**Histogram Analysis Parameters**")
+                st.info("📈 Statistical analysis of fetal heart rate distribution patterns")
                 cols = st.columns(3)
                 for i in range(11, 21):
                     param_name, unit, min_val, max_val, default = ctg_params[i]
